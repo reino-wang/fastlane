@@ -1,0 +1,18 @@
+#import "/Users/wanglei/Desktop/fastlane/fastlane/Fastfile"
+
+import_from_git
+(
+	url: 'https://github.com/reino-wang/fastlane.git',
+	branch: 'master'
+)
+
+fastlane_version "2.47.0"
+
+default_platform :ios
+
+platform :ios do
+
+
+	
+
+end
