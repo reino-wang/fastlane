@@ -6,9 +6,17 @@ module Fastlane
 
     class RwPodRepoUpdateAction < Action
       def self.run(params)
-        target_repo = params[:repo]
-        result = Actions.sh "pod repo update";
-        UI.message "Successfully pod repo update"
+
+        command = []
+        command << "pod repo update"
+
+        if params[:repo]
+          target_repo = params[:repo]
+          command << "#{target_repo}"
+        end
+
+        result = Actions.sh(command.join(' '));
+        UI.success("Pod lib lint Successfully ⬆️ ")
         return result;
       end
 
@@ -25,14 +33,19 @@ module Fastlane
       #   # this is your chance to provide a more detailed description of this action
       # end
 
-      # def self.available_options
-      #   # Define all options your action supports. 
+      def self.available_options
+        # Define all options your action supports. 
         
-      #   # Below a few examples
-      #   [
-
-      #   ]
-      # end
+        # Below a few examples
+        [
+          FastlaneCore::ConfigItem.new(
+            key: :repo,
+            description: "need update pod repo",
+            is_string: true,
+            optional: true
+          ),
+        ]
+      end
 
       # def self.output
       #   # Define the shared values you are going to provide
