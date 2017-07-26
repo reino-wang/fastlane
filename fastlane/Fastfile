@@ -1,7 +1,6 @@
 #import "/Users/wanglei/Desktop/fastlane/fastlane/Fastfile"
 
-import_from_git
-(
+import_from_git(
 	url: 'https://github.com/reino-wang/fastlane.git',
 	branch: 'master'
 )
